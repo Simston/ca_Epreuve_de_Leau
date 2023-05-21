@@ -1,8 +1,8 @@
 class MyTools {
 
-    verifyNumberOfArgument(arg){
+    verifyIfTwoArgs(arg){
         var countArgs = this.lengthOf(arg);
-        if (countArgs < 4) {
+        if (countArgs < 4 || countArgs > 4) {
             return false;
         } else {
             return true;
