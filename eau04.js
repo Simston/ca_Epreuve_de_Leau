@@ -5,7 +5,7 @@ const mytools = new MyTools();
 // Variables
 // Recover process.argv array
 var argumentsArray = process.argv;
-var booleanVerif = mytools.verifyIfOneArgumentOnly(argumentsArray);
+var booleanVerif = mytools.checkArgumentCount(1, argumentsArray);
 var error;
 var finalResult;
 var count = 0;

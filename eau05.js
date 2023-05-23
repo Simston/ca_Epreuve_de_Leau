@@ -4,7 +4,7 @@ const mytools = new MyTools();
 // Variables
 // Recover process.argv array
 var argumentsArray = process.argv;
-var booleanVerif = mytools.verifyIfTwoArgs(argumentsArray);
+var booleanVerif = mytools.checkArgumentCount(2, argumentsArray);
 var error = "";
 var result = false;
 

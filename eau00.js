@@ -3,7 +3,8 @@ const mytools = new MyTools();
 
 // Recover process.argv array
 var arg = process.argv;
-var booleanVerif = mytools.verify0ArgumentOnly(arg);
+var booleanVerif = mytools.checkArgumentCount(0, arg);
+console.log(booleanVerif);
 
 // Combinaisons de 3 chiffres
 if(booleanVerif){

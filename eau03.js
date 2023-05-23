@@ -3,7 +3,7 @@ const mytools = new MyTools();
 
 // Recover process.argv array
 var argumentsArray = process.argv;
-var booleanVerif = mytools.verifyIfOneArgumentOnly(argumentsArray);
+var booleanVerif = mytools.checkArgumentCount(1,argumentsArray);
 
 var resultPreviousIndex;
 var result;

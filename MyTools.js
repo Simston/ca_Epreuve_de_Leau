@@ -1,32 +1,18 @@
 class MyTools {
 
-    verifyIfTwoArgs(arg){
-        var countArgs = this.lengthOf(arg);
-        if (countArgs < 4 || countArgs > 4) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    /**
+     * Checks the number of expected arguments.
+     * @param {number} expectedCountNumber - The expected number of arguments (integer).
+     * @param {any[]} args - Arguments to check.
+     * @returns {boolean} - Returns true if the number of arguments matches, otherwise false.
+     */
 
-    // Checking the return of process.argv // in this case 0 for true
-    verify0ArgumentOnly(arg){
-        var countArgs = this.lengthOf(arg);
-        if (countArgs > 2) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+    checkArgumentCount(expectedCountNumber, args){
 
-    // Checking the return of process.argv // in this case 0 for true
-    verifyIfOneArgumentOnly(arg){   
-        var countArgs = this.lengthOf(arg);
-        if (countArgs > 3 || countArgs < 3) {
-            return false;
-        } else {
-            return true;
-        }
+        let ignoreInArray = 2;
+        let countArgs = args.length - ignoreInArray;
+
+        return expectedCountNumber === countArgs;
     }
 
 
