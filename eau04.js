@@ -4,83 +4,72 @@ const mytools = new MyTools();
 
 // Variables
 // Recover process.argv array
-var argumentsArray = process.argv;
-var booleanVerif = mytools.checkArgumentCount(1, argumentsArray);
-var error;
-var finalResult;
-var count = 0;
-var modulo;
+let argumentsArray = process.argv;
+const argsOk = mytools.checkArgumentCount(1, argumentsArray);
+let number = process.argv[2];
+let error;
+let isPrime;
+let primeCount = 0;
+
 // Storage
-var arrayPrimeNumber = [];
-var index = 0;
+let arrayPrimeNumber = [];
+let index = 0;
 
 // Functions
 
-function isPrimeNumber(number){
+function checkPrimeNumber(number){
+    let modulo;
+
     // We treat here the case of 0 and 1 which are not prime numbers
     if(number == 1 || number == 0) {
-
         error = "case1and0";
-        
     }else{
 
      for(var i = 2; (number - 1) > i; i++) {
-         
          modulo = number % i;
 
          // if there is a remainder between 2 and n -1 then the number is a composite number
          if(modulo == 0){
-             finalResult = false;
+             isPrime = false;
              break;
          }else{
-             finalResult = true;
+             isPrime = true;
          }          
      }
      
-     if(finalResult === true) {
-
+     if(isPrime === true) {
          arrayPrimeNumber[index] = number;
          index ++;
-         count += 1;
+         primeCount += 1;
          nextPrimeNumber(number);
-
      }
  }
 }
 
 function nextPrimeNumber(number){
 
- number = Number(number);
  number += 1;
 
  // for recover next Prime Number; variable count stop the loop
- while(count < 2){
-     isPrimeNumber(number);
+ while(primeCount < 2){
+     checkPrimeNumber(number);
      number += 1;
  }
 }
 
-if(booleanVerif) {
-
-    var number = process.argv[2];
-    isPrimeNumber(number);
-    
-}else{
-    error = "numbOfArguments";
-}
-
 // Part 1: Error Handling
-if(error == "numbOfArguments")  console.log("Veuillez entrer 1 et un seul argument");
 if(error == "case1and0")  console.log("Non, " + number + " n'est pas un nombre premier.");
 
 // Part 2: Parsing
+number = Number(number);
 
 // Part 3: Resolution
+argsOk ? checkPrimeNumber(number) : console.log("Veuillez entrer 1 et un seul argument");
 
 // Part 4: Display
-if(finalResult == true){
+if(isPrime == true){
     console.log(arrayPrimeNumber[1]);
-}else if(finalResult == false){
+}else if(isPrime == false){
     nextPrimeNumber(number);
     console.log(number + " n'est pas un nombre premier le prochain nombre premier est " + arrayPrimeNumber[0]);
 }

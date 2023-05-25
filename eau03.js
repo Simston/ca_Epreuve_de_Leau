@@ -2,51 +2,47 @@ const MyTools = require('./MyTools');
 const mytools = new MyTools();
 
 // Recover process.argv array
-var argumentsArray = process.argv;
-var booleanVerif = mytools.checkArgumentCount(1,argumentsArray);
+const argsArray = process.argv;
 
-var resultPreviousIndex;
-var result;
-var error;
+let dataUser = process.argv[2];
+let resultPreviousIndex;
+let result;
+let error;
 
-// if i have one Argument Only
-if (booleanVerif) {
+function inFibonacci(){
 
-    var startOfFibonacci = [0,1];
-    var index = 2;
-    var count = 0;
-    var dataUser = process.argv[2];
-    var end = false;
+    let startOfFibonacci = [0,1];
+    let index = 2;
+    let count = 0;
+    let end = false;
   
     while(! end ){
 
         startOfFibonacci[index] = startOfFibonacci[count] + startOfFibonacci[count+1];
 
         if(startOfFibonacci[index] > dataUser){
-            error = "notInFibonacci";
+            result = "notInFibonacci";
             end = true;
         }else if(startOfFibonacci[index] == dataUser){ 
             resultPreviousIndex = startOfFibonacci[index -1];
             result = "inFibonacci";
             end = true;
-        }
-       
+        }  
         count += 1;
         index += 1;
-
     }
-
-}else{
-    error = "numbOfArguments";
 }
 
 // Part 1: Error Handling
-if(error == "notInFibonacci") console.log(dataUser + " ne fait pas parti de la suite de Fibonacci");
-if(error == "numbOfArguments")  console.log("Veuillez entrer 1 et un seul argument");
+const argsOk = mytools.checkArgumentCount(1,argsArray);
+if(!argsOk)  console.log("Veuillez entrer un seul argument.");
+
 
 // Part 2: Parsing
 
 // Part 3: Resolution
+if(argsOk) inFibonacci();
 
 // Part 4: Display
-if(result == "inFibonacci") console.log(resultPreviousIndex);
+if(result === "inFibonacci") console.log(resultPreviousIndex);
+if(result === "notInFibonacci") console.log(dataUser + " ne fait pas parti de la suite de Fibonacci");
