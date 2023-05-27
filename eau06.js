@@ -6,7 +6,6 @@ const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 // Recover process.argv array
 const argumentsArray = process.argv;
 const dataUser = process.argv[2];
-const dataUserLength = dataUser.length;
 
 function capitalizeString(string){
     let capitalizedString = [];
@@ -24,6 +23,7 @@ function capitalizeString(string){
 }
 
 function lowercaseEverySecondChar(string){
+  let dataUserLength = string.length;
 // Process to put a lowercase on every second letter
 for (let i = 1; i < dataUserLength; i += 2) {
     for (let y = 0; y < 26; y++) {
@@ -37,9 +37,16 @@ for (let i = 1; i < dataUserLength; i += 2) {
 
 // Part 1: Error Handling
 const ArgsOk = mytools.checkArgumentCount(1, argumentsArray);
-const StringOk = mytools.isStringValid(dataUser);
-if(!StringOk || !ArgsOk){
-    console.log("Veuillez entrer 1 chaîne de caractères, sans caractères spéciaux ni nombres.");
+if(dataUser != undefined){
+  let StringOk;
+  let dataUserLength;
+  StringOk = mytools.isStringValid(dataUser);
+  dataUserLength = dataUser.length;
+} 
+if(!ArgsOk){
+  console.log("Veuillez entrer 1 chaîne de caractères.");
+}else if(!StringOk){
+    console.log("Pas de caractères spéciaux ni de nombres ici.");
 }
 
 // Part 3: Resolution
