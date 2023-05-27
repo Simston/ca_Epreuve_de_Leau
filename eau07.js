@@ -7,33 +7,19 @@ const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 const argumentsArray = process.argv;
 const dataUser = process.argv[2];
 
-
-function capitalizeString(string){
-    let capitalizedString = [];
+function lowerString(string){
+    let lowerizedString = [];
   // Transform and save my string into an array in UPPERCASE
   for (let i = 0; i < dataUserLength; i++) {
     for (let y = 0; y < 26; y++) {
       if (string[i] == lowercaseLetters[y]) {
-        capitalizedString[i] = capitalLetters[y];
+        lowerizedString[i] = lowercaseLetters[y];
       } else if (string[i] == capitalLetters[y]) {
-        capitalizedString[i] = capitalLetters[y];
+        lowerizedString[i] = lowercaseLetters[y];
       }
     }
   }
-  return capitalizedString;
-}
-
-function lowercaseEverySecondChar(string){
-  let dataUserLength = string.length;
-// Process to put a lowercase on every second letter
-for (let i = 1; i < dataUserLength; i += 2) {
-    for (let y = 0; y < 26; y++) {
-      if (string[i] == capitalLetters[y]) {
-        string[i] = lowercaseLetters[y];
-      }
-    }
-  }
-  return string;
+  return lowerizedString;
 }
 
 // Part 1: Error Handling
@@ -41,6 +27,7 @@ const ArgsOk = mytools.checkArgumentCount(1, argumentsArray);
 let StringOk;
 let dataUserLength;
 if(dataUser !== undefined){
+ 
   StringOk = mytools.isStringValid(dataUser);
   dataUserLength = dataUser.length;
 } 
@@ -50,10 +37,9 @@ if(!ArgsOk){
     console.log("Pas de caractères spéciaux ni de nombres ici.");
 }
 
-
 // Part 3: Resolution
-let modifiedString = lowercaseEverySecondChar(capitalizeString(dataUser));
+let modifiedString = lowerString(dataUser);
+console.log(modifiedString)
 
 // Part 4: Display
 if(StringOk && ArgsOk) console.log(modifiedString.join(''));
-
