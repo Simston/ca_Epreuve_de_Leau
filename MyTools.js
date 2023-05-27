@@ -17,7 +17,7 @@ class MyTools {
     /**
      * Checks if the character string does not contain numbers and special characters.
      * @param {string} string - The string to check.
-     * @returns {boolean} - Returns true if the number of arguments matches, otherwise false.
+     * @returns {boolean} - Returns true if the character string does not contain special characters and numbers.
      */
     isStringValid(string) {
         const specialCharsAndNumbers = ['!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
