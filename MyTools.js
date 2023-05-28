@@ -36,6 +36,28 @@ class MyTools {
         return true;
     }
 
+    /**
+     * Checks if the character string does not contain numbers.
+     * @param {string} string - The string to check.
+     * @returns {boolean} - Returns true if the character string does not contain numbers.
+     */
+    stringWithoutNumber(string) {
+      const specialCharsAndNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    
+      var specialCharsAndNumbersLength = specialCharsAndNumbers.length;
+      var stringLength = string.length;
+    
+      for (var i = 0; i < stringLength; i++) {
+        for (var y = 0; y < specialCharsAndNumbersLength; y++) {
+          if (string[i] === specialCharsAndNumbers[y]) {
+            return false;
+          }
+        }
+      }
+    
+      return true;
+  }
+
     lengthOf(data) {
         var count = 0;
         for (var i = 0; data[i] !== undefined; i++) {

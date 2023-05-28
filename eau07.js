@@ -1,25 +1,56 @@
 const MyTools = require('./MyTools');
 const mytools = new MyTools();
 
-const capitalLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+
 // Recover process.argv array
 const argumentsArray = process.argv;
 const dataUser = process.argv[2];
 
-function lowerString(string){
-    let lowerizedString = [];
-  // Transform and save my string into an array in UPPERCASE
-  for (let i = 0; i < dataUserLength; i++) {
-    for (let y = 0; y < 26; y++) {
-      if (string[i] == lowercaseLetters[y]) {
-        lowerizedString[i] = lowercaseLetters[y];
-      } else if (string[i] == capitalLetters[y]) {
-        lowerizedString[i] = lowercaseLetters[y];
+function convertToLowercase(string) {
+  let convertedString = "";
+
+  for (let i = 0; i < string.length; i++) {
+    let lowercaseFound = false;
+
+    for (let y = 0; y < lowercaseLetters.length; y++) {
+      if (string[i] === lowercaseLetters[y] || string[i] === capitalLetters[y]) {
+        convertedString += lowercaseLetters[y];
+        lowercaseFound = true;
+        break;
       }
     }
+
+    if (!lowercaseFound) {  
+      convertedString += string[i];
+    }
   }
-  return lowerizedString;
+  return convertedString;
+}
+
+function capitalizeFirstLetterOfWords(string){
+    let wordIndices = [];
+    // initialize the array with first place of a String
+    wordIndices[0] = -1;
+    // search spaces / lines return /
+    for (let i=0; i < string.length; i++){
+        if(string[i] === " "){
+            wordIndices.push(i);
+        }
+    }
+    
+    for (let y=0; y < wordIndices.length; y++){
+      let index = wordIndices[y];
+      
+      for(let l=0; l < lowercaseLetters.length; l++){
+        if(string[index+1] === lowercaseLetters[l] ){     
+        let modifiedValue = capitalLetters[l];   
+        string = string.substring(0, index + 1) + modifiedValue + string.substring(index + 2);    
+        }
+      }
+    }
+    return string;
 }
 
 // Part 1: Error Handling
@@ -27,8 +58,7 @@ const ArgsOk = mytools.checkArgumentCount(1, argumentsArray);
 let StringOk;
 let dataUserLength;
 if(dataUser !== undefined){
- 
-  StringOk = mytools.isStringValid(dataUser);
+  StringOk = mytools.stringWithoutNumber(dataUser);
   dataUserLength = dataUser.length;
 } 
 if(!ArgsOk){
@@ -37,9 +67,11 @@ if(!ArgsOk){
     console.log("Pas de caractères spéciaux ni de nombres ici.");
 }
 
+// Part 2: Parsing
+let lowString = convertToLowercase(dataUser);
+
 // Part 3: Resolution
-let modifiedString = lowerString(dataUser);
-console.log(modifiedString)
+let finalResult = capitalizeFirstLetterOfWords(lowString);
 
 // Part 4: Display
-if(StringOk && ArgsOk) console.log(modifiedString.join(''));
+if(StringOk && ArgsOk) console.log(finalResult);
