@@ -10,7 +10,7 @@ const ArgsOk = mytools.checkArgumentCount(1, argumentsArray);
 let StringOk;
 let dataUserLength;
 if(dataUser !== undefined){
-  StringOk = mytools.isStringWithoutSpecialCharsOrNumbers(dataUser);
+  StringOk = mytools.isStringCountainOnlyNumbers(dataUser);
   dataUserLength = dataUser.length;
 } 
 if(!ArgsOk){
