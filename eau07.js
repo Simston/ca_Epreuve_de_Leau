@@ -64,7 +64,7 @@ if(dataUser !== undefined){
 if(!ArgsOk){
   console.log("Veuillez entrer 1 chaîne de caractères.");
 }else if(!StringOk){
-    console.log("Pas de caractères spéciaux ni de nombres ici.");
+    console.log("Pas de nombres ici.");
 }
 
 // Part 2: Parsing
