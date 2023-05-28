@@ -3,7 +3,7 @@ class MyTools {
     /**
      * Checks the number of expected arguments.
      * @param {number} expectedCountNumber - The expected number of arguments (integer).
-     * @param {any[]} args - Arguments to check.
+     * @param {any[]} args - Arguments array to check.
      * @returns {boolean} - Returns true if the number of arguments matches, otherwise false.
      */
     checkArgumentCount(expectedCountNumber, args){
@@ -13,6 +13,20 @@ class MyTools {
 
         return expectedCountNumber === countArgs;
     }
+
+     /**
+     * Checks the minimum number of expected arguments.
+     * @param {number} expectedCountNumber - The expected number of arguments (integer).
+     * @param {any[]} args - Arguments array to check.
+     * @returns {boolean} - Returns true if the number of expected args >=, otherwise false.
+     */
+     checkMinArgumentCount(expectedMinCountNumber, args){
+
+      let ignoreInArray = 2;
+      let countArgs = args.length - ignoreInArray;
+
+      return expectedMinCountNumber <= countArgs;
+  }
 
     /**
      * Checks if the character string does not contain numbers and special characters.
