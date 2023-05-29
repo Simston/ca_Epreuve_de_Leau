@@ -25,7 +25,6 @@ function diffMinMaxAbsolute(array){
     //Initialize minAbsolute
     minAbsolute = array[0] - array[1];
     minAbsolute = Math.abs(minAbsolute);
-    let ignore;
 
     for(let y=0; y < array.length-1; y++){ 
         for(let x= y+1; x < array.length; x++ ){
