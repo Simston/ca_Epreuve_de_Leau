@@ -14,7 +14,6 @@ for (let i = 0; i <= 127; i++) {
 function byAsciiOrder(array){
     let indexesArray = [];
     let index = 0;
-
     //Search indexes from asciiOrder Array
     for(let i=0; i < array.length; i++){
         for(let c=0; c < asciiOrder.length; c++){
@@ -26,7 +25,6 @@ function byAsciiOrder(array){
             }
         }
     }
-
     // Bubble sort on array with indexeses of ASCII table
     for(let i=0; i < indexesArray.length; i++){
         for(let y=i+1; y < indexesArray.length; y++){
@@ -53,9 +51,7 @@ function byAsciiOrder(array){
 function stockAndVerifyArguments(array){
     let arrayOfReferences = [];
     //Recover all references
-    for(let i=2; i < array.length; i++){
-
-        
+    for(let i=2; i < array.length; i++){ 
         arrayOfReferences.push(array[i]);           
     }
     return arrayOfReferences;
