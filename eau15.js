@@ -1,1 +1,1 @@
-console.log("J'ai terminé l’Épreuve de l'Eau et c'était fun.");
+console.log("J'ai terminé l’Épreuve de l'Eau et c'était water proof.");
